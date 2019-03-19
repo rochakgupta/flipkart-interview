@@ -86,7 +86,7 @@ public class Board {
             int stateI = x + pieceI;
             for (int pieceJ = 0; pieceJ < pieceN; pieceJ++) {
                 int stateJ = y + pieceJ;
-                if (!isBlockInBounds(stateI, stateJ)) {
+                if (!isBlockOnBoard(stateI, stateJ)) {
                     return false;
                 }
                 int pieceBlock = pieceGrid[pieceI][pieceJ];
@@ -99,12 +99,12 @@ public class Board {
         return true;
     }
 
-    private boolean isBlockInBounds(int i, int j) {
+    private boolean isBlockOnBoard(int i, int j) {
         return i >= 0 && i < m && j >= 0 && j < n;
     }
 
     private State getStateAfterPlacingPiece(int x, int y, Piece piece, State state) {
-        int[][] stateGridAfterPlacingPiece = Util.getMatrixCopy(state.getGrid());
+        int[][] nextGrid = Util.getMatrixCopy(state.getGrid());
         int pieceM = piece.getM();
         int pieceN = piece.getN();
         int[][] pieceGrid = piece.getGrid();
@@ -114,10 +114,10 @@ public class Board {
                 int stateJ = y + pieceJ;
                 int pieceBlock = pieceGrid[pieceI][pieceJ];
                 if (pieceBlock == 1) {
-                    stateGridAfterPlacingPiece[stateI][stateJ] = 1;
+                    nextGrid[stateI][stateJ] = 1;
                 }
             }
         }
-        return new State(stateGridAfterPlacingPiece);
+        return new State(nextGrid);
     }
 }
