@@ -1,5 +1,3 @@
-package com.flipkart.interview;
-
 public class Util {
     public static int[][] getMatrixCopy(int[][] matrix) {
         int m = matrix.length;

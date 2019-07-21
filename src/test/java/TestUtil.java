@@ -1,5 +1,3 @@
-package com.flipkart.interview;
-
 public class TestUtil {
     public static boolean areMatricesEqual(int[][] firstMatrix, int[][] secondMatrix) {
         int firstMatrixM = firstMatrix.length;
